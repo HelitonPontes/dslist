@@ -1,5 +1,6 @@
-package com.devsuperior.dslist.Entidades;
+package com.devsuperior.dslist.entidades;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,12 +14,16 @@ public class Game {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
+
   private String titulo;
   private int ano;
   private String genero;
   private String platafornma;
+  private double pontuacao;
   private String imgUrl;
   private String descricaoCurta;
+  
+  @Column(columnDefinition = "TEXT")
   private String descricaoLonga;
 
   //Contrutores
@@ -26,18 +31,20 @@ public class Game {
 
   }
 
-  public Game(long id, String titulo, int ano, String genero, String platafornma, String imgUrl, String descricaoCurta,
-  String descricaoLonga) {
+  public Game(long id, String titulo, int ano, String genero, String platafornma, double pontuacao, String imgUrl,
+      String descricaoCurta, String descricaoLonga) {
     this.id = id;
     this.titulo = titulo;
     this.ano = ano;
     this.genero = genero;
     this.platafornma = platafornma;
+    this.pontuacao = pontuacao;
     this.imgUrl = imgUrl;
     this.descricaoCurta = descricaoCurta;
     this.descricaoLonga = descricaoLonga;
   }
 
+  
   //metodos get e set
   public long getId() {
     return id;
@@ -63,6 +70,8 @@ public class Game {
     this.ano = ano;
   }
 
+
+
   public String getGenero() {
     return genero;
   }
@@ -77,6 +86,14 @@ public class Game {
 
   public void setPlatafornma(String platafornma) {
     this.platafornma = platafornma;
+  }
+
+  public double getPontuacao() {
+    return pontuacao;
+  }
+
+  public void setPontuacao(double pontuacao) {
+    this.pontuacao = pontuacao;
   }
 
   public String getImgUrl() {
@@ -112,6 +129,7 @@ public class Game {
     return result;
   }
 
+ 
   @Override
   public boolean equals(Object obj) {
     if (this == obj)
